@@ -6,22 +6,6 @@
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- task: UseRubyVersion@0
-  inputs:
-    versionSpec: '>= 2.5'
-
-- script: |
-    gem install bundler
-    bundle install --retry=3 --jobs=4
-  displayName: 'bundle install'
-
-- script: bundle exec rake
-  displayName: 'bundle exec rake'
-
 # https://learn.microsoft.com/azure/devops/pipelines/ecosystems/ruby
 pool:
   vmImage: 'ubuntu-latest' # other options: 'macOS-latest', 'windows-latest'
